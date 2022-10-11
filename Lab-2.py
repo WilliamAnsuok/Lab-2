@@ -1,7 +1,15 @@
 import csv
+import os
+import random
+import time
 
 def esc(code):
     return f'\u001b[{code}m'
+
+
+def cls(n):
+    print('\n' * n)
+
 
 def flag_finland():
     for i in range(4):
@@ -85,6 +93,8 @@ def bar_chart(ex, ch):
     else:
         print('      >200  <=200   ')
 
+
+GREY = esc(47)
 RED = esc(41)
 BLUE = esc(44)
 WHITE = esc(107)
@@ -132,3 +142,31 @@ print('1.5' + BLACK + ' ' + WHITE + '   ' * 2 + BLUE + '   ' + WHITE + '   ' * 7
 print('  1' + BLACK + ' ' + WHITE + '   ' * 1 + BLUE + '   ' + WHITE + '   ' * 8 + END)
 print('0.5' + BLACK + ' ' + BLUE + '   ' + WHITE + '   ' * 9 + END)
 print('  0   1  2  3  4  5  6  7  8  9  10')
+
+'''for i in range(110):
+    color = esc(i)
+    print(color + str(i))
+'''
+os.system('cls')
+for p in range(100):
+    print('   ' * 2 + GREY + '   ' * 5 + END + '   ' * 3 + GREY + '   ' * 2 + END + '   ' + GREY + '   ' * 2 + END)
+    print('   ' + GREY + '   ' * 7 + END + '   ' + GREY + '   ' * 7 + END)
+    print('   ' * 2 + GREY + '   ' * 2 + END + '   ' + GREY + '   ' * 2 + END + '   ' * 3 + GREY + '   ' * 5 + END)
+    y = []
+    for i in range(10):
+        x = []
+        for j in range(15):
+            x.append('   ')
+        y.append(x)
+    for i in range(10):
+        x_i = random.randint(0, 14)
+        y_i = random.randint(0, 9)
+        y[y_i][x_i] = ' * '
+    for i in y:
+        part_of_sky = ''
+        for j in i:
+            part_of_sky += j
+        print(part_of_sky)
+    print(WHITE + '   ' * 17 + END)
+    time.sleep(0.35)
+    os.system('cls')
